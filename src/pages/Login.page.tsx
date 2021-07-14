@@ -5,11 +5,13 @@ interface Props {}
 
 const Login: FC<Props> = (props) => {
   return (
-    <div>
-      This is login page. Don't have an account{' '}
-      <Link to="/signup">
-        <span className="text-blue-500">click here</span>
-      </Link>
+    <div className="flex flex-row justify-between">
+      <div>
+        This is login page. Don't have an account{' '}
+        <Link to="/signup">
+          <span className="text-blue-500">click here</span>
+        </Link>
+      </div>
     </div>
   );
 };

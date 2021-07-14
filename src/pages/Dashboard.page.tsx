@@ -5,11 +5,13 @@ interface Props {}
 
 const Dashboard: FC<Props> = (props) => {
   return (
-    <div>
-      This is Dashboard page.
-      <Link to="/recordings">
-        <span className="text-blue-500"> go to Recordings </span>
-      </Link>
+    <div className="flex flex-row justify-between">
+      <div>
+        This is Dashboard page.
+        <Link to="/recordings">
+          <span className="text-blue-500"> go to Recordings </span>
+        </Link>
+      </div>
     </div>
   );
 };
