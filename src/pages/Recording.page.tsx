@@ -2,10 +2,10 @@ import { FC, memo } from 'react';
 
 interface Props {}
 
-const Recording: FC<Props> = (props) => {
-  return <div>This is Recording page.</div>;
+const Recordings: FC<Props> = (props) => {
+  return <div>This is Recordings page.</div>;
 };
 
-Recording.defaultProps = {};
+Recordings.defaultProps = {};
 
-export default memo(Recording);
+export default memo(Recordings);
