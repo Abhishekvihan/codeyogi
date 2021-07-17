@@ -10,6 +10,7 @@ module.exports = {
         200: '#d4e9e2',
         300: '#008248',
         400: '#1e3932',
+        auth: '#060818',
       },
       secondary: '#f3f1e7',
       gray: colors.gray,
@@ -19,6 +20,7 @@ module.exports = {
       yellow: colors.yellow,
       blue: colors.blue,
       gold: '#cba258',
+      green: colors.green,
     },
     fontFamily: {
       sans: "'Helvetica Neue',Helvetica,Arial,sans-serif",
