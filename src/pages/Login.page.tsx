@@ -78,7 +78,7 @@ const Login: FC<Props> = (props) => {
 
           <div className="flex items-center justify-between">
             <Toggle switchText="Show Password" />
-            <ButtonBlue buttontext="Log In" />
+            <ButtonBlue buttontext="Log In" className="" />
           </div>
           {isSubmitting && <FaSpinner className="animate-spin"></FaSpinner>}
           <div className="pt-12 text-base text-gray-500 ">
