@@ -1,36 +1,41 @@
 import { FC, memo } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import InputElement from '../components/InputElement';
+import Input from '../components/Input/Input';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Toggle from '../components/Toggle';
-import ButtonBlue from '../components/ButtonBlue';
+import Button from '../components/Button/Button';
 import { FaSpinner } from 'react-icons/fa';
 interface Props {}
 
 const Signup: FC<Props> = (props) => {
   const history = useHistory();
-  const { handleSubmit, getFieldProps, touched, isSubmitting, errors } =
-    useFormik({
-      initialValues: {
-        Username: '',
-        email: '',
-        password: '',
-      },
-      validationSchema: yup.object().shape({
-        Username: yup.string().required(),
-        email: yup.string().required().email(),
-        password: yup.string().required().min(8),
-      }),
-      onSubmit: (data, { setSubmitting }) => {
-        console.log('form submitting', data);
-        setTimeout(() => {
-          console.log('form submit sucessfully');
-          history.push('/dashboard');
-          setSubmitting(false);
-        }, 5000);
-      },
-    });
+  const {
+    handleSubmit,
+    getFieldProps,
+    touched,
+    isSubmitting,
+    errors,
+  } = useFormik({
+    initialValues: {
+      Username: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: yup.object().shape({
+      Username: yup.string().required(),
+      email: yup.string().required().email(),
+      password: yup.string().required().min(8),
+    }),
+    onSubmit: (data, { setSubmitting }) => {
+      console.log('form submitting', data);
+      setTimeout(() => {
+        console.log('form submit sucessfully');
+        history.push('/dashboard');
+        setSubmitting(false);
+      }, 5000);
+    },
+  });
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-row justify-center w-3/4 pt-12 mx-auto leading-3 ">
@@ -45,7 +50,7 @@ const Signup: FC<Props> = (props) => {
             </Link>
           </div>
           <div>
-            <InputElement
+            <Input
               required
               id="Username"
               placeholder="Username"
@@ -54,7 +59,7 @@ const Signup: FC<Props> = (props) => {
               error={errors.Username}
               {...getFieldProps('Username')}
             />
-            <InputElement
+            <Input
               id="email-address"
               placeholder="Email"
               type="email"
@@ -65,7 +70,7 @@ const Signup: FC<Props> = (props) => {
               required
             />
 
-            <InputElement
+            <Input
               required
               id="password"
               placeholder="Password"
@@ -92,7 +97,7 @@ const Signup: FC<Props> = (props) => {
                 </span>
               </div>
             </div>
-            <ButtonBlue buttontext="Sign Up" className="" />
+            <Button children="Sign Up" className="" />
           </div>
           {isSubmitting && <FaSpinner className="animate-spin"></FaSpinner>}
 

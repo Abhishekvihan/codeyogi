@@ -9,7 +9,7 @@ interface Props {
 const Toggle: React.FC<Props> = ({ switchText }) => {
   const [isEnabled, setisEnabled] = useState(false);
   return (
-    <div className="flex items-center pt-12 text-gray-600">
+    <div className="flex items-center text-gray-600">
       {switchText}{' '}
       <Switch checked={isEnabled} onChange={setisEnabled}>
         <span

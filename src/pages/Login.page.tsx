@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import InputElement from '../components/InputElement';
+import Input from '../components/Input/Input';
 
 import { FaSpinner } from 'react-icons/fa';
 import Toggle from '../components/Toggle';
-import ButtonBlue from '../components/ButtonBlue';
+import Button from '../components/Button/Button';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
@@ -12,25 +12,30 @@ interface Props {}
 
 const Login: FC<Props> = (props) => {
   const history = useHistory();
-  const { handleSubmit, getFieldProps, touched, isSubmitting, errors } =
-    useFormik({
-      initialValues: {
-        email: '',
-        password: '',
-      },
-      validationSchema: yup.object().shape({
-        email: yup.string().required().email(),
-        password: yup.string().required().min(8),
-      }),
-      onSubmit: (data, { setSubmitting }) => {
-        console.log('form submitting', data);
-        setTimeout(() => {
-          console.log('form submit sucessfully');
-          history.push('/dashboard');
-          setSubmitting(false);
-        }, 5000);
-      },
-    });
+  const {
+    handleSubmit,
+    getFieldProps,
+    touched,
+    isSubmitting,
+    errors,
+  } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: yup.object().shape({
+      email: yup.string().required().email(),
+      password: yup.string().required().min(8),
+    }),
+    onSubmit: (data, { setSubmitting }) => {
+      console.log('form submitting', data);
+      setTimeout(() => {
+        console.log('form submit sucessfully');
+        history.push('/dashboard');
+        setSubmitting(false);
+      }, 5000);
+    },
+  });
 
   // history = useHistory();
 
@@ -54,7 +59,7 @@ const Login: FC<Props> = (props) => {
             </Link>
           </div>
 
-          <InputElement
+          <Input
             id="email-address"
             placeholder="Email"
             type="email"
@@ -65,7 +70,7 @@ const Login: FC<Props> = (props) => {
             required
           />
 
-          <InputElement
+          <Input
             required
             id="password"
             placeholder="Password"
@@ -76,9 +81,9 @@ const Login: FC<Props> = (props) => {
             {...getFieldProps('password')}
           />
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-12">
             <Toggle switchText="Show Password" />
-            <ButtonBlue buttontext="Log In" className="" />
+            <Button children="Log In" className="" />
           </div>
           {isSubmitting && <FaSpinner className="animate-spin"></FaSpinner>}
           <div className="pt-12 text-base text-gray-500 ">
