@@ -1,11 +1,13 @@
 import React from 'react';
 import { InputHTMLAttributes } from 'react';
 import { FC, memo } from 'react';
+import { IconType } from 'react-icons';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   error?: string;
   touched?: boolean;
+  Icon?: IconType;
 }
 
 const InputElement: FC<Props> = ({
@@ -14,11 +16,17 @@ const InputElement: FC<Props> = ({
   className,
   placeholder,
   id,
+  Icon,
   ...rest
 }) => {
   return (
     <div className="pt-12">
       <div>
+        {Icon && (
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <Icon className="w-5 h-5 " aria-hidden="true" />
+          </span>
+        )}
         {id && placeholder && (
           <label htmlFor={id} className="sr-only">
             {placeholder}
